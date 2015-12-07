@@ -5,25 +5,21 @@ class CashRegister
   attr_reader :discount
  
   def initialize(discount=0)
-    @discount = discount.to_f
+    @discount = discount.to_i.to_f
     @transactions = []
     @total = 0
-  
   end
 
   def add_item(title, price, quantity = 1)
     quantity.times {
       @transactions << {title => price} 
       }
-    
     update_total
     update_items
-    # @total = @transactions.collect{|item| item.values}.flatten.reduce(:+)
   end
 
   def update_total
    @total = @transactions.collect{|item| item.values}.flatten.reduce(:+).to_f
-
   end
 
   def update_items
@@ -43,11 +39,11 @@ class CashRegister
     @transactions.pop
     update_items
     update_total
-
-
   end
 
 
 end
+
+
 
 
