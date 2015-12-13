@@ -3,13 +3,24 @@ class CashRegister
   @@items = []
 
   def initialize(discount = 0)
+    self.items.clear
     @total = 0
     @discount = discount
   end
 
+  def items
+    @@items 
+  end
+
   def add_item(title, price, quantity = 1)
+    @price = price
+    @quantity = quantity
+    @title = title
     self.total += price * quantity
-    quantity.times {self.items << title}
+    transaction = []
+    quantity.times {transaction << title}
+    self.items << transaction
+    self.items.flatten!
   end
 
   def apply_discount
@@ -20,12 +31,8 @@ class CashRegister
     end
   end
 
-  def items
-    @@items 
+  def void_last_transaction
+    add_item(@title, -@price, @quantity)
   end
 
 end
-
-me = CashRegister.new(20)
-puts me.add_item("me", 1000)
-puts me.apply_discount
