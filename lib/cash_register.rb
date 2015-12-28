@@ -2,7 +2,7 @@
 require 'pry'
 require 'mathn'
 class CashRegister
-  attr_accessor :total, :discount, :items, :void_last_transaction
+  attr_accessor :total, :discount, :items, :last_transaction
   def initialize(discount = 0)
     @items = Array.new
     @total = 0
@@ -11,8 +11,11 @@ class CashRegister
 
   def add_item(title, price, quantity = 1)
     self.total += (price * quantity)
-    quantity == 1 ? @items << title : @items << ((title + " ") * quantity).split
-    @void_last_transaction = (price * quantity)
+    quantity.times do |q|
+      self.items << title
+    end
+    # quantity == 1 ? @items << title : @items << ((title + " ") * quantity).split
+    self.last_transaction = (price * quantity)
   end
 
   def apply_discount
@@ -24,12 +27,8 @@ class CashRegister
     end
   end
 
-  def items
-    @items.flatten
-  end
-
   def void_last_transaction
-    self.total -= @void_last_transaction
+    self.total -= self.last_transaction
   end
 end
 
