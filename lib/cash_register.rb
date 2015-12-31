@@ -1,5 +1,5 @@
 class CashRegister
-  attr_accessor :total
+  attr_accessor :total, :last_transaction
 
   @@all_items = []
 
