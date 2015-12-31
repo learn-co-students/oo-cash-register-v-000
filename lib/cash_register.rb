@@ -1,6 +1,6 @@
 class CashRegister
 	attr_reader :discount, :items
-	attr_accesor :total
+	attr_accessor :total
 	def initialize(discount=0)
 		@total = 0
 		@discount = discount
@@ -11,16 +11,18 @@ class CashRegister
 	def add_item(item, price, quantity=1)
 		@last = price*quantity
 		@total+= @last
+		quantity.times do
 		@items << item
+		end
 	end
 	
 	def apply_discount
-		if @disount != 0
+		if @discount != 0
 			@total = @total * (1.to_f-@discount.to_f/100.to_f)
 			@total = @total.to_i
-			puts "After the discount, the total comes to #{@total}."
+			return "After the discount, the total comes to $#{@total}."
 		else
-			puts "There is no discount to apply."
+			return "There is no discount to apply."
 		end
 	end
 	
