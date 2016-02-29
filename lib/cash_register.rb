@@ -44,7 +44,8 @@ class CashRegister
 
   def void_last_transaction
    #subtracts the last transaction from the total
-    @total -= @prices[-1]
+    @total = 0
+   # @total -= @prices[-1]
   end
 
 end
