@@ -1,3 +1,4 @@
+#oo cash register
 require 'pry'
 
 class CashRegister
