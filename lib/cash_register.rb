@@ -29,7 +29,6 @@ class CashRegister
     price = self.last_transaction[:price]
     quantity = self.last_transaction[:quantity]
     self.total -= price * quantity
-    self.items.delete(item)
   end
 
 
