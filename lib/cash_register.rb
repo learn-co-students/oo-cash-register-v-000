@@ -18,7 +18,7 @@ class CashRegister
       self.items << title
       self.total += price
     end
-    @last_price = total
+    self.last_price = total
   end
 
   def apply_discount
@@ -32,7 +32,7 @@ class CashRegister
 
   def void_last_transaction
     self.items.pop
-    self.total -= @last_price
+    self.total -= self.last_price
     total
   end
 
