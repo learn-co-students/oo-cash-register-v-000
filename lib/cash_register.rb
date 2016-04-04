@@ -22,12 +22,12 @@ class CashRegister
     # accepts optional FLOAT or INTEGER quantity
     if quantity
       quantity.times { @items << title }
-      @transaction = price*quantity
+      self.transaction = price*quantity
     else
-      @transaction = price
+      self.transaction = price
       @items << title
     end
-    self.total += @transaction
+    self.total += self.transaction
   end
 
 
@@ -51,7 +51,7 @@ class CashRegister
 
   def void_last_transaction
     # subtracts the last transaction from total
-    self.total -= @transaction
+    self.total -= self.transaction
   end
 
 end
