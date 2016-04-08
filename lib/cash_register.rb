@@ -40,7 +40,6 @@ else
 return "After the discount, the total comes to $#{string_print}."
 end
 
-@last_transaction = @total
 end
 
 
