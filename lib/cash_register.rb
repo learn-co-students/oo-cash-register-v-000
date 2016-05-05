@@ -5,10 +5,9 @@ class CashRegister
   def initialize(num = 0)
     @total = 0
     @discount = num
-    self.apply_discount
   end
 
-  def apply_discount
+  def self.apply_discount
     @total -= @total*(@discount/100)
   end
 
