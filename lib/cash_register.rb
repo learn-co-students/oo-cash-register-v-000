@@ -9,11 +9,7 @@ class CashRegister
   end
 
   def apply_discount
-    if @discount = 0
-      @total = num
-    else
-      @total = @total*((100-@discount)/100)
-    end
+    @total -= @total*(@discount/100)
   end
 
   def add_item(item, cost, quantity = 1)
