@@ -20,9 +20,7 @@ class CashRegister
 		@quantity = quantity
 		self.new_transaction = price*quantity
 		self.total += self.new_transaction
-		quantity.times do 
-			@items << title
-		end
+		quantity.times {@items << @title}
 		self.total
 	end
 		
