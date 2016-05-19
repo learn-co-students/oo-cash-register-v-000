@@ -7,18 +7,15 @@ class CashRegister
      @total = 0
   end
 
-  def add_item(title, price, *quantity)
-    @total = total + price * quantity
-
+  def add_item(title, price, quantity=1)
+    @total = total + price*quantity
   end
 
+  def apply_discount
+      @total -= @total * (@discount / 100)
+      self.class.new
+    end
 
-  #def add_item(title, price, *quantity)
-  #  price = price.to_f
-  ##  quantity = quantity.join.to_i
-  #  @total = @total + price * quantity
-#
- # end
 
 end
 
