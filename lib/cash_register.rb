@@ -1,33 +1,29 @@
 class CashRegister
-  # attr_accessor :total, :discount, :title, :price, :quantity
-  #
-  # @@all = []
-  #
-  # def initialize(discount=0)
-  #   @total = 0
-  #   @discount = discount
-  # end
-  #
-  # def add_item(title, price, quantity=1)
-  #   self.title = title
-  #   self.price = price
-  #   self.quantity = quantity
-  #   self.total = self.total + (price * quantity)
-  #   self.total
-  # end
-  #
-  # def apply_discount
-  #   puts "apply discount of #{self.discount} percent"
-  #   discounted_price = self.total - (self.total * (self.discount / 100) )
-  #   puts discounted_price
-  #   self.total = discounted_price
-  # end
+  attr_accessor :total, :discount, :title, :price, :quantity
+
+  def initialize(discount=0)
+    @total = 0
+    @discount = discount.to_i
+  end
+  
+  def add_item(title, price, quantity = 1)
+    self.title = title
+    self.price = price
+    self.quantity = quantity
+    self.total += self.price * self.quantity
+    self.total
+  end
+  
+  def apply_discount
+    self.total = self.total - (( self.total * self.discount ) / 100)
+    self.total
+  end
 
 end
-#
+
 # seller1 = CashRegister.new(20)
-# seller1.add_item("Eggs",4.50,2)
-# seller1.add_item("Milk",3.50)
+# seller1.add_item("Mac",1000)
+# # seller1.add_item("Milk",3.50)
 # seller1.apply_discount
 
 
