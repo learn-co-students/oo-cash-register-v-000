@@ -1,7 +1,7 @@
 class CashRegister
   attr_accessor :total
   attr_reader :discount, :items
-  
+
   def initialize(discount = nil)
     @total = 0
     @discount = discount
@@ -9,9 +9,8 @@ class CashRegister
     @transaction = {price: 0, item: []}
   end
 
-  def add_item(item, price, quantity=nil)
-    counter = quantity ||= 1
-    counter.times do
+  def add_item(item, price, quantity=1)
+    quantity.times do
       @items << item
       @total = @total + price
     end
@@ -21,8 +20,7 @@ class CashRegister
   end
 
   def get_discount
-    discount_percentage = @discount * 0.01
-    @total = (@total - (discount_percentage * @total)).to_i
+    @total = (total * (100.00 - @discount)/100).to_i
   end
 
   def apply_discount
