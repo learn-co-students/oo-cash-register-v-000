@@ -8,19 +8,18 @@ class CashRegister
     @total = 0
     @discount = discount
     @items = []
-    @last_trans = []
+    last_trans = 0
   end
 
-  def add_item(item, price, quantity = 1)
+  def add_item(name, price, quantity = 1)
     self.total = quantity*price + self.total
     counter = 1
       while counter <= quantity
-        @items << item
-        @last_trans[0] = price
-        @last_trans[1] = quantity
+        items << name
         counter += 1
         #binding.pry
       end
+      self.last_trans = price*quantity
 
   end
 
@@ -35,7 +34,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total = @total - @last_trans[0]*@last_trans[1]
+    self.total -= self.last_trans
   end
 
 end
