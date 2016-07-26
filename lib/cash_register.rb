@@ -1,22 +1,22 @@
 require 'pry'
 class CashRegister
-  attr_accessor :total, :discount
+  attr_accessor :total, :discount, :last_transaction
 
-  @@items = []
+  #@items = []
 
   def initialize(discount=nil)
     @total = 0
     @discount = discount
+    @items = []
   end
 
-  def add_item(item, price, quantity=nil)
-    quantity = nil || quantity
-    if quantity
-      self.total += price*quantity
-    else
-      self.total += price
+  def add_item(item, price, quantity=1)
+    self.total += price*quantity
+    @last_transaction = [item, price, quantity]
+    
+    quantity.times do 
+      @items << item
     end
-    @@items << item
   end
 
   def apply_discount
@@ -32,7 +32,11 @@ class CashRegister
   end
 
   def items
-    @@items
+    @items
+  end
+
+  def void_last_transaction
+    self.total -= @last_transaction[1] # [1] is the price in the array
   end
 
 end
