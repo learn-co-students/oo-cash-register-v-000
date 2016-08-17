@@ -1,18 +1,19 @@
-
+## WHY ARE MY CHANGES NOT SAVING!!!
 class CashRegister
-  attr_accessor :total, :discount
+  attr_accessor :total, :discount, :items
 
   CASHREGISTER = []
-
-  @items = Array.new
 
   def initialize(discount = 0)
     @discount = discount
     @total = 0
     @discount
+    @items = []
+    @previous_item_price = 0
   end
 
   def add_item(title, price, quantity = 1)
+    @previous_item_price = price
     quantity.times{
       @items << title
     }
@@ -28,8 +29,14 @@ class CashRegister
     end
   end
 
-  def items
-    @items
+  def void_last_transaction
+    @total -= @previous_item_price
   end
 
 end
+
+
+new_register = CashRegister.new
+new_register.add_item("eggs", 1.99)
+new_register.add_item("tomato", 1.76, 3)
+new_register.items
