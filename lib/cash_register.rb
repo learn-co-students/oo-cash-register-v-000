@@ -6,7 +6,7 @@ class CashRegister
 
   def initialize(discount = 0)
     @discount = discount
-    @total = 0 + discount
+    @total = 0
     @discount
   end
 
@@ -15,12 +15,8 @@ class CashRegister
   end
 
   def apply_discount
-    @total = @total - @discount
+    @total = @total * @discount * .01
     "After the discount, the total comes to $#{@total}."
   end
 
 end
-
-cesh = CashRegister.new(200)
-cesh.add_item("toy",800)
-cesh.apply_discount
