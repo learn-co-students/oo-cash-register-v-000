@@ -1,14 +1,14 @@
 # Object Oriented Cash Register
-
+<!--  -->
 ## Objectives
 
-1. Build a class with instance methods. 
-2. Call instance methods inside of other instance methods. 
-3. Use instance methods to track information pertinent to an instance of a class. 
+1. Build a class with instance methods.
+2. Call instance methods inside of other instance methods.
+3. Use instance methods to track information pertinent to an instance of a class.
 
 ## Description
 
-We're going to create an Object Oriented Cash Register that can: 
+We're going to create an Object Oriented Cash Register that can:
 * Add items of varying quantities and prices
 * Calculate discounts
 * Keep track of what's been added to it
@@ -16,13 +16,13 @@ We're going to create an Object Oriented Cash Register that can:
 
 ## Instructions
 
-**This is a test-driven lab!** You will need to read the spec file and the test output very carefully to solve this one. 
+**This is a test-driven lab!** You will need to read the spec file and the test output very carefully to solve this one.
 
 **Hint #1:** Keep in mind that to call an instance method *inside* another instance method, we use the `self` keyword to refer to the instance on which we are operating. For example:
 
 ```ruby
 class Person
-  
+
   attr_accessor :age
 
   def initialize(age)
