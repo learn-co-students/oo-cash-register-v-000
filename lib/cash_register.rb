@@ -5,7 +5,7 @@ class CashRegister
 
   def initialize(discount = 0)
     @items_array = []
-    self.total = 0
+    @total = 0
     @discount = discount
   end
 
@@ -14,30 +14,26 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 1)
-    @title = title
-    @quantity = quantity
-    self.items_array << Array.new(quantity, title)
-    self.total = self.total + (price * quantity)
-    self.total
+    @items_array << [Array.new(quantity, title), price].flatten
+    @total += (price * quantity)
   end
 
   def apply_discount
-    if self.discount > 0
-      disc = (100 - discount)
-      disc = (disc.to_f / 100)
-      self.total = self.total * disc
-      "After the discount, the total comes to $#{self.total.to_i}."
+    if @discount > 0
+      disc = (100 - @discount).to_f/100
+      @total *= disc
+      "After the discount, the total comes to $#{@total.to_i}."
     else
       "There is no discount to apply."
     end
   end
 
   def items
-    self.items_array.flatten!
+    @items_array.flatten.find_all{|element| element.is_a?(String)}
   end
 
   def void_last_transaction
-    self.total = 0
+    @total -= @items_array[-1][-1]
   end
 
 end
