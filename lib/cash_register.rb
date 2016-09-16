@@ -2,20 +2,16 @@ require "pry"
 class CashRegister
 
 attr_reader :discount
-attr_accessor :add_item
+attr_accessor :total
+
 
   def initialize(discount=20)
     @total = 0
     @discount = discount
   end
 
-
-def total
-@current_total = 100
-end
-
 def add_item(title, price)
-@current_total = @current_total + price
+@total + price
 # binding.pry
 end
 
