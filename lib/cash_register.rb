@@ -2,7 +2,7 @@ require "pry"
 class CashRegister
 
 attr_reader :discount
-attr_accessor :total, :items, :void_last_transaction
+attr_accessor :total, :items, :last_transaction
 attr_writer :apply_discount
 
 
@@ -16,6 +16,7 @@ attr_writer :apply_discount
   self.total = self.total + price*quantity
   # binding.pry
  quantity.times { @items << title }
+ self.last_transaction = price * quantity
    end
 
 
@@ -29,5 +30,8 @@ attr_writer :apply_discount
     end
   end
 
+  def void_last_transaction
+    self.total = self.total - self.last_transaction
+  end
 
 end
