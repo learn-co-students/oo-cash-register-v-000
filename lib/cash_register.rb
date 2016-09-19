@@ -1,8 +1,8 @@
 require "pry"
 class CashRegister
 
-attr_reader :discount, :items
-attr_accessor :total, :title
+attr_reader :discount
+attr_accessor :total
 attr_writer :apply_discount
 
 
@@ -15,6 +15,7 @@ attr_writer :apply_discount
   @total = @total + (price*quantity)
    end
 
+
   def apply_discount
     if discount != 0
       @discount = @discount.to_f/100 * @total
@@ -25,9 +26,9 @@ attr_writer :apply_discount
     end
   end
 
-def items
-  add_item
-  # binding.pry
-end
+  def items
+    [].push(title)
+    # binding.pry
+  end
 
 end
