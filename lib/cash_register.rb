@@ -17,7 +17,7 @@ def add_item(title, price, quantity = nil)
 end
 
 def apply_discount
-  return (@total - (@total * (@discount / 100)))
+  self.total = (@total - (@total * (@discount / 100)))
 end
 
 end
