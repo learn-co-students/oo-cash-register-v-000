@@ -1,24 +1,32 @@
-require 'pry'
 class CashRegister
 
-  attr_accessor :discount, :total
+  attr_accessor :total, :discount, :items
 
   def initialize(discount=nil)
-    @discount = discount
     @total = 0
+    @discount = discount
+    @items = []
   end
 
-  def add_item(item, price, amount=1)
-    # binding.pry
-    self.total += price * amount
+  def add_item(title, price, quantity=1)
+    @total += price*quantity
+    while quantity > 0
+      @items << title
+      quantity = quantity - 1
+    end
   end
 
   def apply_discount
-    # binding.pry
-    if discount > 0 && total
-      self.total = (self.total * ((100.0 - discount.to_f)/100)).to_i
+    if @discount != nil
+      @total = @total * (1.00 - @discount/100.00)
+      return "After the discount, the total comes to $#{@total.floor}."
     else
-      self.total
+      return "There is no discount to apply."
     end
   end
+
+  def items
+    @items
+  end
+
 end
