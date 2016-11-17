@@ -13,7 +13,7 @@ def add_item(item,price,quantity= 1)
 end
 
 def apply_discount
-  if(discoun > 0)
+  if(discount > 0)
     @total -= self.discount
   return "After the discount, the total comes to $#{@total}."
 else
