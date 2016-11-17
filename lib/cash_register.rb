@@ -31,11 +31,11 @@ class CashRegister
     end #end of apply_discount
 
     def items
-          @@transactions
+      @@transactions
     end #end of items
 
     def void_last_transaction
-          self.total -= @last_item_price
+      self.total -= @last_item_price
     end  #end of void_last_transaction
 
 end #end of class
