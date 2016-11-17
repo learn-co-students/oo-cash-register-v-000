@@ -9,7 +9,7 @@ class CashRegister
  end
 def add_item(item,price,quantity= 1)
 @total += price * quantity
-@@transactions << @total
+@@transactions << item
 end
 
 def apply_discount
@@ -20,5 +20,8 @@ else
   "No discount to apply"
   @totalS
 end
-end
-end
+end #end of apply_discount
+
+def items
+@@transactions
+end #end of items
