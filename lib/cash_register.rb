@@ -4,6 +4,8 @@ class CashRegister
   @@items = []
 
   def initialize(discount=0)
+    @solution = []
+    solution << title
     @total = 0
     @discount = discount
   end
@@ -24,8 +26,7 @@ class CashRegister
   end
 
   def items
-    title = self.new
-    @@item << title
+    solution
   end
 
 end
