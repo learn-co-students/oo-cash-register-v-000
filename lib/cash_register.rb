@@ -16,7 +16,7 @@ class CashRegister
     end
     price = price * quantity
     @transaction_tracker << price
-    @total = @total + price
+    self.total = self.total + price
   end
 
   def apply_discount
@@ -26,13 +26,13 @@ class CashRegister
       @discount = 100 - @discount
       @discount = "0." + @discount.to_s
       @discount = @discount.to_f
-      @total = @total * @discount
-      "After the discount, the total comes to $#{@total.to_i}."
+      self.total = self.total * @discount
+      "After the discount, the total comes to $#{self.total.to_i}."
     end
   end
 
   def void_last_transaction
-    @total = @total - @transaction_tracker.pop
+    self.total = self.total - @transaction_tracker.pop
   end
 
 end
