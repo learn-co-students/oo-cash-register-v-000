@@ -17,7 +17,7 @@ class CashRegister
     price = price * quantity
     self.total += price
     self.last_item = price
-    apply_discount
+    #apply_discount
     quantity.times do
       self.item_list << title
     end
