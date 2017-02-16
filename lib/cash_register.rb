@@ -16,7 +16,7 @@ class CashRegister
   end
 
   def add_item(title, price, quantity=1)
-    self.total += (price * quantity)
+    self.total += (price * quantity) #@total / last_trans also seems to work. Srsly?
     self.last_transaction = (price * quantity) #creates a saved state of current (last) transaction. would work in this example just by @total = 0
     quantity.times do @cart << title #no . between time and do -_- quantity pointing to optional quanitity variable. wish it was clearer in the code.
     end
@@ -36,7 +36,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total -= last_transaction
+    self.total -= last_transaction
   end
 
 end
