@@ -24,7 +24,7 @@ class CashRegister
 
   def apply_discount
     if discount > 0
-      self.total -= (discount*10) #haven't the faintest idea why *10 is necessary to pass. If it were a percent *100, but clearly not..?
+      @total -= (discount*10) #haven't the faintest idea why *10 is necessary to pass. If it were a percent *100, but clearly not..?
       return "After the discount, the total comes to $#{@total}." #also have no idea why I had to switch it order of these if/else statements to work at all?
     else
       return "There is no discount to apply."
