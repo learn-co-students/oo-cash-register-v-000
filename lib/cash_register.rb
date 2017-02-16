@@ -9,10 +9,6 @@ class CashRegister
     @last_transaction = 0
   end
 
-  def total
-    @total
-  end
-
   def add_item(title, price, quantity=1)
     self.total += (price * quantity) #@total / last_trans also seems to work. Srsly?
     self.last_transaction = (price * quantity) #creates a saved state of current (last) transaction. would work in this example just by @total = 0
