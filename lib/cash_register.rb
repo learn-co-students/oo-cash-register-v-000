@@ -2,8 +2,6 @@ class CashRegister
 
   attr_accessor :total, :discount, :last_transaction
 
-  #INSTANCE VARS$
-  ###############
   def initialize(discount=0) #total is set to 0 in init body, discount is passed as an optional argument
     @total = 0
     @discount = discount
