@@ -79,6 +79,9 @@ class CashRegister
     item_names#implicit return array item_names
   end
   def void_last_transaction
+    #binding.pry
+    a = self.total - self.total
     binding.pry
+    a
   end
 end
