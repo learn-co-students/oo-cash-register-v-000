@@ -9,7 +9,7 @@ class CashRegister
     #on initialization
     @total = 0
     #sets total to 0
-    @discount = 20
+    @discount = discount
     #sets the discount to 20
     #binding.pry
     @cart = []
@@ -77,5 +77,8 @@ class CashRegister
       end
     end
     item_names#implicit return array item_names
+  end
+  def void_last_transaction
+    binding.pry
   end
 end
