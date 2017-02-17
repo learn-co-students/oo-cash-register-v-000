@@ -1,7 +1,7 @@
 require 'pry'
 #https://github.com/deniznida/oo-cash-register-ruby-007-public/edit/master/lib/cash_register.rb
 class CashRegister
-  attr_accessor :total, :discount
+  attr_accessor :total, :discount, :last_transaction
   #read&write method of variable total, discount
   def initialize(discount = 0)
     #set discount = 0 passes
@@ -43,6 +43,7 @@ class CashRegister
     #keeps a running total? yes, when?
     #when there are more than 1 hash
     #binding.pry
+    self.last_transaction = price * quantity
   end
   #calculate discounts
   def apply_discount
@@ -80,8 +81,7 @@ class CashRegister
   end
   def void_last_transaction
     #binding.pry
-    a = self.total - self.total
-    binding.pry
-    a
+    self.total = self.total - self.last_transaction
+    #binding.pry
   end
 end
