@@ -10,7 +10,8 @@ class CashRegister
     @total = 0
     #sets total to 0
     @discount = discount
-    #sets the discount to 20
+    #error was to sets the discount to 20 
+    #instead of setting it to argument,discount
     #binding.pry
     @cart = []
     #creates a local variable array, cart
