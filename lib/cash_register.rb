@@ -1,28 +1,25 @@
-require 'pry'
-
 class CashRegister
 
-  attr_accessor :discount, :total
-  attr_reader :items
+  attr_accessor :discount, :total, :items
 
-  def initialize(discount = nil)
-    @discount = discount
-    @total = 0
-    @items = []
+  def initialize(discount = 0)
+    self.discount = discount
+    self.total = 0
+    self.items = []
   end
 
   def add_item(title, price, quantity = 1)
-    @total += price * quantity
+    self.total += price * quantity
     until quantity == 0
-      @items << [title, price, quantity]
+      self.items << [title, price, quantity]
       quantity -= 1
     end
   end
 
   def apply_discount
-    if @discount != nil
-      @total *= (1-(@discount/100.00))
-      "After the discount, the total comes to $#{@total.round}."
+    if self.discount != 0
+      self.total *= (1-(self.discount/100.00))
+      "After the discount, the total comes to $#{self.total.round}."
     else
       "There is no discount to apply."
     end
@@ -31,7 +28,6 @@ class CashRegister
   def items
     @items.collect do |item|
       item[0]
-    # binding.pry
     end
   end
 
@@ -39,13 +35,4 @@ class CashRegister
     @total -= @items[-1][2]*@items[-1][1]
     @items.pop
   end
-
 end
-
-hat = CashRegister.new(10)
-
-hat.add_item("monacle", 30)
-hat.add_item("cheese", 2, 8)
-hat.add_item("willa", 1000, 1)
-
-hat.items
