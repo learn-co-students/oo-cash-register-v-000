@@ -9,9 +9,17 @@ class CashRegister
 
   def add_item(title, price, quantity = 1)
     self.total += price * quantity
-    self.items << Array.new(quantity, title)
-    self.items.flatten!
-    self.last_price = price
+
+    #first solution
+    #self.items << Array.new(quantity, title)
+    #self.items.flatten!
+
+    #refactored solution
+    quantity.times do
+      self.items << title
+    end
+
+    self.last_price = price * quantity
   end
 
   def apply_discount
