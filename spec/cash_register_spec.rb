@@ -39,6 +39,7 @@ describe 'CashRegister' do
   end
 
   describe '#apply_discount' do
+    let(:cash_register_with_discount) { CashRegister.new(200) }
     context 'the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
         cash_register_with_discount.add_item("macbook air", 1000)
