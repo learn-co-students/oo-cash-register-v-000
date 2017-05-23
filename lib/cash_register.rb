@@ -15,13 +15,16 @@ end
 def add_item(title, price, quantity = nil)
   if quantity != nil
     self.total += price * quantity
-    # list = "#{title}" * quantity
     quantity.times { @items << title }
   else
     self.total += price
     @items << title
   end
-  # @transaction =
+  if quantity !=nil
+    @transaction = price * quantity
+  else
+    @transaction = price
+  end
 end
 
 def apply_discount
@@ -39,8 +42,10 @@ def items
   @items
 end
 
-def void_last_transaction(price)
-  self.total -= price
+def void_last_transaction
+  # binding.pry
+
+  self.total -= @transaction
 end
 
 end
