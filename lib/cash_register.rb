@@ -11,8 +11,6 @@ class CashRegister
 
   def add_item(title, price, quantity = 1)
     @items = [] if @items == nil 
-    @title = title
-    @quantity = quantity
     @total +=  price * quantity
     quantity.times { @items << title }
     @last_item_price = price
