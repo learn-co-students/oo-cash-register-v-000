@@ -50,7 +50,7 @@ def items
 end
 
 def void_last_transaction
-  @total = total - (@item_details[:price])
+  @total = (@total - @item_details[:price])
 end
 
 end
