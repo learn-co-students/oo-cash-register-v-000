@@ -12,12 +12,12 @@ class CashRegister
 
   def add_item(title, price, quantity = nil)
     if quantity.nil?
-     self.total += price
-     self.last_transaction_amount = price
-     @items << title
+      self.last_transaction_amount = price
+      self.total += self.last_transaction_amount
+      @items << title
     else
-      self.total = self.total + (price * quantity)
       self.last_transaction_amount = price * quantity
+      self.total += self.last_transaction_amount
       quantity.times {@items << title}
     end
   end
