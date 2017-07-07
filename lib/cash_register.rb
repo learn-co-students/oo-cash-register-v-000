@@ -10,18 +10,12 @@ class CashRegister
     @items = []
   end
 
-  def add_item(title, price, quantity = nil)
-    if quantity.nil?
-      self.last_transaction_amount = price
-      self.total += self.last_transaction_amount
-      @items << title
-    else
+  def add_item(title, price, quantity = 1)
       self.last_transaction_amount = price * quantity
       self.total += self.last_transaction_amount
       quantity.times {@items << title}
-    end
   end
-
+  
   def apply_discount
     if self.discount.nil?
       "There is no discount to apply."
