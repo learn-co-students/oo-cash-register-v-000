@@ -1,28 +1,42 @@
 require 'pry'
 
 class CashRegister
-
-  attr_accessor :discount, :total, :items
-
+  attr_accessor :discount, :items,:total, :transaction_history #:last_transaction
+  attr_reader
   def initialize(discount=0)
     @total = 0
     @discount = discount
     @items = []
+    @transaction_history = []
   end
 
   def add_item(item, price, quantity=1)
-    @item = item
-    self.total += (price * quantity)
+    transaction = (price * quantity).round(2)
+    transaction_history.push(transaction)
+    @total += last_transaction
+    quantity.times do
+    @items.push(item)
   end
-
-# What is the difference between self.total and @total, aren't they both pointing to the instance variable?
+  end
 
   def apply_discount
-    if discount != 0 #why is this discount and not self.discount or @discount?
-      self.total = (total * ((100.0 - discount.to_f)/100).to_i)
-      "After the discount, the total comes to $#{self.total}."
+    @total = total - (discount.to_f / 100 * total)
+    if @discount == 0
+      "There is no discount to apply."
     else
-      "There is no discount to apply." #Why does this fail when made a 'puts' statement?
+      "After the discount, the total comes to $#{total.round}."
     end
   end
+
+  def last_transaction
+    @transaction_history.last
+
+  end
+
+  def void_last_transaction
+    @total -= last_transaction
+    @transaction_history.delete(last_transaction)
+
+  end
+
 end
