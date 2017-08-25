@@ -1,7 +1,7 @@
 class CashRegister #KISS, Susan!
 
-  attr_accessor :total, :discount, :items
-  # attr_accessor :items, :discount, :total, :last_transaction
+  attr_accessor :total, :discount, :item
+  # attr_accessor :last_transaction
 
   def initialize(discount=0)
     @total = 0
@@ -13,7 +13,9 @@ class CashRegister #KISS, Susan!
   end
 
   def add_item(title, price, quantity=0)
-      #increases total
+    item = {:title=>price}
+    price*quantity = subtotal
+    #increases total
     #accepts optional quantity
     #include previous total
   end
