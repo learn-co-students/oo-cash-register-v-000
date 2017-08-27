@@ -1,5 +1,3 @@
-require 'pry'
-
 class CashRegister
   attr_accessor :discount, :total, :items, :void_last_transaction, :last_price
 
