@@ -4,7 +4,6 @@ class CashRegister
 
   def initialize(discount = 0)
     @total = 0
-    #optionally takes an employee discount on initialization
     @discount = discount
     @basket = []
 
