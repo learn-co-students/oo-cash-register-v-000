@@ -15,6 +15,8 @@ def add_item(title, price, quantity=1)
 end
 
 def apply_discount
+  #a *= b == a = a * b
+  #self.total = self.total * (100-self.discount.to_f)/100
   self.total *= (100-self.discount.to_f)/100
   if self.discount == 0
     "There is no discount to apply."
