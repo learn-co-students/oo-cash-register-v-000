@@ -20,11 +20,11 @@ class CashRegister
   def apply_discount
     disc_amt = @total * @discount/100
     @total = total - disc_amt
-     if discount > 0
-     "After the discount, the total comes to $#{@total}."
-     else
-       "There is no discount to apply."
-     end
+		if discount > 0
+			"After the discount, the total comes to $#{@total}."
+		else
+			"There is no discount to apply."
+		end
   end
 
   def items
@@ -32,6 +32,6 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total = total - @last_tx[1]
+		@total = total - @last_tx[1]
   end
 end
