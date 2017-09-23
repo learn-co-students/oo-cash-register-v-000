@@ -1,12 +1,13 @@
 require 'pry'
 
 class CashRegister
-  attr_accessor :total, :discount, :items
+  attr_accessor :total, :discount, :items, :last_item
 
   def initialize(discount = 0)
     @total = 0
     @discount = discount
     @items = []
+    @last_item = []
   end
 
   def add_item(title, price, quantity = 1)
@@ -14,11 +15,13 @@ class CashRegister
     @total = @total + price
     if quantity == 1
       @items << title
+      @last_item = [title, price]
     else
       i = 0
       while i < quantity
         @items << title
         i += 1
+        @last_item = [title, price]
       end
     end
   end
@@ -39,11 +42,8 @@ class CashRegister
   end
 
   def void_last_transaction
-
+    @total = @total - last_item[1]
   end
 end
 
-#new_jawn = CashRegister.new(20)
-#new_jawn.add_item("macbook", 1000)
-#new_jawn.apply_discount
-s
+# would like to delete titles from items in the future
