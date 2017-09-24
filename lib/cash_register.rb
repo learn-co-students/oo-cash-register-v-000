@@ -1,9 +1,12 @@
+require "pry"
+
 class CashRegister
   attr_accessor :total, :discount, :name, :quantity
-  @@item = []
+  # @@item = []
   def initialize(discount=nil)
     @total = 0
     @discount = discount
+    @item = []
   end
 
   def total
@@ -17,21 +20,28 @@ class CashRegister
     # self.items
     @lastprice = price * quantity
     @total += price * quantity
+    while self.quantity > 0
+      @item << name
+      self.quantity -= 1
+    end
 
   end
 
   def apply_discount
     if @discount == nil
-      puts "There is no discount to apply."
+      "There is no discount to apply."
+
     else
-      @total = Float(@total) * (1 - @discount)
-      puts "After the discount, the total comes to $#{@total}."
+      @total = (@total) * ((100.0 - @discount)/100.0)
+      @total=Integer(@total)
+      # binding.pry
+      "After the discount, the total comes to $#{@total}."
     end
+    # binding.pry
   end
 
   def items
-    self.quantity times {@@item << self.name}
-    @@item
+    @item
   end
 
   def void_last_transaction
