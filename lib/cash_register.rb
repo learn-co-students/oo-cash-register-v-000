@@ -25,6 +25,7 @@ class CashRegister
     else
       "There is no discount to apply."
     end
+    @total
   end
 
   def items
@@ -33,6 +34,7 @@ class CashRegister
 
   def void_last_transaction
     @total = @total - @lastitem
+
   end
 end
   # attr_accessor :total, :discount, :items, :lastitem
