@@ -39,3 +39,4 @@ class CashRegister
     @total = @total - @transaction
   end
 end
+# Where can I use "self"? Run this code.
