@@ -17,9 +17,9 @@ class CashRegister
   end
   end
 
-#   def discount # this is already above in attr_accessor! no extra reader needed.
-#     @discount
-#   end
+  def discount # leave these readers to protect your instance methods
+    @discount
+  end
 
   def apply_discount
     if @discount != 0
@@ -30,9 +30,9 @@ class CashRegister
     end
   end
 
-#   def items #this also is already above in attr_accessor! no need for reader!
-#     @items
-#   end
+  def items # leave these readers to protect your instance methods
+    @items
+  end
 
   def void_last_transaction
     @items.pop
