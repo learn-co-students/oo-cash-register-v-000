@@ -11,7 +11,7 @@ attr_accessor :total, :discount, :items, :last_transaction
   end
 
   def add_item(item,price,q=1)
-    @last_transaction = price
+    @last_transaction = price*q
     q.times {@items.push(item)}
     self.total += price * q
   end
@@ -27,7 +27,7 @@ attr_accessor :total, :discount, :items, :last_transaction
   end
 
   def void_last_transaction
-    self.total = self.total - @last_transaction
+    self.total = self.total - self.last_transaction
   end
 
 end
