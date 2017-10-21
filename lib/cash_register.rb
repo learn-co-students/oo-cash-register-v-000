@@ -13,7 +13,7 @@ class CashRegister
 
   def add_item(food, price, quantity=1)
     @total += (price * quantity)
-    @price = price
+    @price = price * quantity
     @item += Array.new(quantity, food)
   end
 
