@@ -2,7 +2,7 @@ require 'pry'
 
 class CashRegister
     
-        attr_accessor :discount, :total, :title
+        attr_accessor :discount, :total, :title, :price
         attr_reader :items
     
         def initialize(discount = 0)
@@ -10,6 +10,18 @@ class CashRegister
             @total = 0
     
             @discount = discount.to_f
+
+            # counter = 0
+            
+            # @items = []
+
+            # @items.each do |item|
+                
+            #     @items << item
+            
+            # counter +=1
+            end
+
     
         end
     
@@ -31,10 +43,14 @@ class CashRegister
 
       
         def items
-            @items
+            @items << @title
+            @items      
         end
 
         def void_last_transaction
+             
+            @total = total-total.last
+            # binding.pry  
         end
 
 
