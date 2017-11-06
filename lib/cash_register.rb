@@ -1,37 +1,19 @@
-require 'pry'
-
 class CashRegister
     
-        attr_accessor :discount, :total, :title, :price
-        attr_reader :items
-    
-        def initialize(discount = 0)
-            
-            @total = 0
-    
-            @discount = discount.to_f
-
-            # counter = 0
-            
-            # @items = []
-
-            # @items.each do |item|
-                
-            #     @items << item
-            
-            # counter +=1
-            end
-
-    
+        attr_accessor :items, :discount, :total, :last_transaction 
+        
+        def initialize(discount = 0)            
+            @items = []
+            @total = 0    
+            @discount = discount.to_f             
         end
     
-        def add_item(title, price, quantity = 1)
-            @title = title
-            @quantity = quantity
-            @price = price
-            @total = total+(price*quantity)
+        def add_item(title, price, quantity = 1)        
+            self.total = total+(price*quantity) 
+            quantity.times do self.items << title end              
+            self.last_transaction = price*quantity    
         end
-      
+            
         def apply_discount         
             @total = total-(total*@discount.to_i/100.to_f)
             if @total > 0
@@ -40,18 +22,9 @@ class CashRegister
                 return "There is no discount to apply."       
             end
         end
-
-      
-        def items
-            @items << @title
-            @items      
-        end
-
+           
         def void_last_transaction
-             
-            @total = total-total.last
-            # binding.pry  
+           @total = total-self.last_transaction
         end
-
 
 end
