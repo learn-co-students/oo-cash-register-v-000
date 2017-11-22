@@ -8,9 +8,9 @@ class CashRegister
   def new 
     @total = 0 
   end 
-  def initialize
+  #def initialize
     
-  end
+  #end
     
   
     
