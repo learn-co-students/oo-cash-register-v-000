@@ -2,13 +2,17 @@ require 'pry'
 
 class CashRegister 
 # set @total instance variable 
-  @total = 0
+  attr_accessor :total, :discount
+  @total
 # initialize @total instance variable to 0 
-  def initialize(total)
-  @total = total
+  def new 
+    @total = 0 
+  end 
+  def initialize
+    
   end
     
-    
+  
     
     
     
