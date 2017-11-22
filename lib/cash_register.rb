@@ -7,7 +7,7 @@ class CashRegister
 # initialize @total instance variable to 0 
   def initialize(discount = 0) # sets a default argument with a value of 0 
     @total = 0 #sets cash register total to 0 
-    @discount = 20
+    @discount = discount 
   end 
   
   def total # returns the amount of money in the cash register 
