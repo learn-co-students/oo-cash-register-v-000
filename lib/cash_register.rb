@@ -2,7 +2,8 @@ require 'pry'
 
 class CashRegister 
 # set @total instance variable 
-  attr_accessor :total, :discount 
+  attr_accessor :total, :discount, :title, :price 
+  @@items = []
 
 # initialize @total instance variable to 0 
   def initialize(discount = 0) # sets a default argument with a value of 0 
@@ -16,6 +17,8 @@ class CashRegister
     
   def add_item(title, price, quantity = 1) 
     #add item to total
+    @title = title
+    @price = price 
     #1 input = price and quantity
     #2 calculate total from price and quantity (total = price and quantity)
      @total += price * quantity 
@@ -40,9 +43,13 @@ class CashRegister
   end
   
   def items 
+    
     # list item titles
-    # this will return an array of items 
-    binding.pry 
+    # this will return an array of items
+    self.add_item
+    @@items << @title * quantity
+   
+    
   end 
   
   
