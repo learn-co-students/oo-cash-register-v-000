@@ -21,7 +21,8 @@ class CashRegister
     @price = price 
     #1 input = price and quantity
     #2 calculate total from price and quantity (total = price and quantity)
-     @total += price * quantity 
+     @total += price * quantity
+      #@@items << @title
     # add price to total
   end 
   
@@ -46,8 +47,11 @@ class CashRegister
     
     # list item titles
     # this will return an array of items
-    self.add_item
-    @@items << @title * quantity
+    self.add_item(title,price,quantity = 1)
+    @@items << @title
+    # there's a relationship between title and quantity
+#    title == quantity
+#    @@items << @title * quantity
    
     
   end 
