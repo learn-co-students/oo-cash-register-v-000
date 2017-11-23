@@ -29,9 +29,23 @@ class CashRegister
     # calculate total with discount
     # input is total and discount
     # total * .20 subtract from total
-    @total = @total - (@discount * 10)
-    return "After the discount, the total comes to " + "$" + @total.to_s + "."
+    # if register was not initialized with a discount return error message 
+      if @discount != 20
+       return "There is no discount to apply."
+      else
+        @total = @total - (@discount * 10)
+        return "After the discount, the total comes to " + "$" + @total.to_s + "."
     # discount should be applied to the total price of items 
   end 
+  end
+  
+  def items 
+    
+  end 
+  
+  
+  
+  
+  
   
 end 
