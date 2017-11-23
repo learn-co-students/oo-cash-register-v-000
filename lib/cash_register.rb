@@ -54,7 +54,10 @@ class CashRegister
   def items 
     # list item titles
     # this will return an array of items
-    @cart
+    @cart  
+  end 
+  
+  def void_last_transaction
     
   end 
   
