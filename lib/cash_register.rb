@@ -2,13 +2,14 @@ require 'pry'
 
 class CashRegister 
 # set @total instance variable 
-  attr_accessor :total, :discount, :title, :price 
-  @@items = []
+  attr_accessor :total, :discount, :title, :price, :cart 
+
 
 # initialize @total instance variable to 0 
   def initialize(discount = 0) # sets a default argument with a value of 0 
     @total = 0 #sets cash register total to 0 
     @discount = discount 
+    @cart = [] 
   end 
   
   def total # returns the amount of money in the cash register 
@@ -21,8 +22,15 @@ class CashRegister
     @price = price 
     #1 input = price and quantity
     #2 calculate total from price and quantity (total = price and quantity)
-     @total += price * quantity
-      
+    counter = quantity 
+    while counter > 0 
+      counter -= 1 
+      @cart << @title
+    end # however many items are in cart, is equal amount of times to add title 
+    
+    @total += price * quantity
+  
+    
     # add price to total
   end 
   
@@ -44,18 +52,9 @@ class CashRegister
   end
   
   def items 
-    
     # list item titles
     # this will return an array of items
-    @@items.keep_if {|c| c == @title}
-    
-    #@@items.select {|c| c << @title } # this method will take the items array and add an item each time it loops through 
-   # @@items << @title 
-    
-    # there's a relationship between title and quantity
-#    title == quantity
-#    @@items << @title * quantity
-   
+    @cart
     
   end 
   
