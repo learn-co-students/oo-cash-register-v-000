@@ -47,8 +47,11 @@ class CashRegister
     
     # list item titles
     # this will return an array of items
-    self.add_item(title,price,quantity = 1)
-    @@items 
+    @@items.keep_if {|c| c == @title}
+    
+    #@@items.select {|c| c << @title } # this method will take the items array and add an item each time it loops through 
+   # @@items << @title 
+    
     # there's a relationship between title and quantity
 #    title == quantity
 #    @@items << @title * quantity
