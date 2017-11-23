@@ -40,7 +40,9 @@ class CashRegister
   end
   
   def items 
-    
+    # list item titles
+    # this will return an array of items 
+    binding.pry 
   end 
   
   
