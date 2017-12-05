@@ -79,5 +79,11 @@ describe 'CashRegister' do
       cash_register.add_item("tomato", 1.76)
       expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(1.76).to(0.0)
     end
+
+    it 'maintains a proper items list' do
+      cash_register.add_item("tomato", 1.76)
+      cash_register.add_item("orange", 1.99, 3)
+      expect{cash_register.void_last_transaction}.to change{cash_register.items}.from(%w{tomato orange orange orange}).to(%w{tomato})
+    end
   end
 end
