@@ -14,13 +14,13 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 1)
-    @total += (price * quantity)
+    self.total += (price * quantity)
     quantity.times do @items << [title, price] end
   end
 
   def apply_discount
-    if @discount > 0
-      @total -= @discount
+    if discount > 0
+      self.total -= discount
       "After the discount, the total comes to $#{total.to_s.split('.')[0]}."
     else
       "There is no discount to apply."
@@ -28,6 +28,6 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total -= @items.last[1].to_f
+    self.total -= @items.last[1].to_f
   end
 end
