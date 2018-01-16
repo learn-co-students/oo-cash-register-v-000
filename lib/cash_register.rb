@@ -1,12 +1,16 @@
 require 'pry'
 class CashRegister
 
-  attr_accessor :total, :discount
-  @@items = []
+  attr_accessor :total, :discount, :items
+
+  #items IS a method. attr_accessor creates two instance methods.reader and getter method.
+  #if we want to read specific properties from an instance, we need to initialize
+  #that method with a variable to hold the method
 
   def initialize(discount = 0)
     @total = 0
     @discount = discount
+    @items = []
   end
 
   def add_item(title, price, quantity = 1)
@@ -14,10 +18,10 @@ class CashRegister
     @price = price
     @quantity = quantity
     @total += (@price * @quantity)
-    i = 0
-    while i < @quantity-1
-      @@items << @title
-      i += 1
+    @last_transaction = (@price * @quantity)
+    until @quantity == 0
+      @items << @title
+      @quantity -= 1
     end
   end
 
@@ -31,8 +35,8 @@ class CashRegister
     end
   end
 
-  def items
-    @@items
+  def void_last_transaction
+    @total = @total - @last_transaction
   end
 
 end
