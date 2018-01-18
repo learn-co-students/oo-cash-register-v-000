@@ -20,7 +20,7 @@ describe 'CashRegister' do
   end
 
   describe '#add_item' do
-    it 'accepts a title and a price and increases the total' do
+    xit 'accepts a title and a price and increases the total' do
       expect{cash_register.add_item("eggs", 0.98)}.to change{cash_register.total}.by(0.98)
     end
 
@@ -40,7 +40,7 @@ describe 'CashRegister' do
 
   describe '#apply_discount' do
     context 'the cash register was initialized with an employee discount' do
-      it 'applies the discount to the total price' do
+      xit 'applies the discount to the total price' do
         cash_register_with_discount.add_item("macbook air", 1000)
         cash_register_with_discount.apply_discount
         expect(cash_register_with_discount.total).to eq(800)
@@ -59,14 +59,14 @@ describe 'CashRegister' do
     end
 
     context 'the cash register was not initialized with an employee discount' do
-      it 'returns a string error message that there is no discount to apply' do
+      xit 'returns a string error message that there is no discount to apply' do
         expect(cash_register.apply_discount).to eq("There is no discount to apply.")
       end
     end
   end
 
   describe '#items' do
-    it 'returns an array containing all items that have been added' do
+    xit 'returns an array containing all items that have been added' do
       new_register = CashRegister.new
       new_register.add_item("eggs", 1.99)
       new_register.add_item("tomato", 1.76, 3)
@@ -75,7 +75,7 @@ describe 'CashRegister' do
   end
 
   describe '#void_last_transaction' do
-    it 'subtracts the last transaction from the total' do
+    xit 'subtracts the last transaction from the total' do
       cash_register.add_item("tomato", 1.76)
       expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(1.76).to(0.0)
     end
