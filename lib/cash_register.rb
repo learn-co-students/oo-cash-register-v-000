@@ -10,10 +10,7 @@ class CashRegister
     @trans = price * quantity
     @total += @trans
     @items ||= []
-    counter = 1
-    while counter <= quantity
-      @items << title
-      counter += 1
+    quantity.times do @items << title
     end
   end
   
