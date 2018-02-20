@@ -14,11 +14,6 @@ class CashRegister
   def discount
     @discount
   end  
-
-  
-  def total_returns
-    
-  end
   
   def add_item(title, price, quantity= 1)
     @total = @total + (price * quantity.to_i)
@@ -42,14 +37,9 @@ class CashRegister
     end
   end 
   
-  def items
-    @@items
-  end
-  
   def void_last_transaction
     @@items.delete_if {|x| x == @last_item}
     @total = @total - @last_item_price
-    
   end
   
   
