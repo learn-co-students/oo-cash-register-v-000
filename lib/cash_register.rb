@@ -31,6 +31,8 @@ class CashRegister
 
   def void_last_transaction
     self.total = total - item_total
+
+    # below also updates the cart after void
     self.cart = cart - item_count
   end
 
