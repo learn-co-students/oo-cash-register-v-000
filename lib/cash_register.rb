@@ -22,7 +22,7 @@ class CashRegister
       @items << item_name
       @total = @total + price
     end
-    @last_transaction = price
+    self.last_transaction = price
 
   end
 
@@ -35,14 +35,14 @@ class CashRegister
       @total = (@total - (@total * percent)).to_i
       success + "#{@total}."
     else
-      @total = (@total - (@total * percent)).to_i
+      #@total = (@total - (@total * percent)).to_i
       no_discount
     end
   end
 
 
   def void_last_transaction
-    @total = @total - @last_transaction
+    self.total = self.total - self.last_transaction
   end
 
 end # => CashRegister End
