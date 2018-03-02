@@ -1,18 +1,14 @@
 class CashRegister
 
-  attr_accessor :discount, :total
+  require 'pry'
 
-  # def employee_discount=(employee_discount)
-  #   @employee_discount = employee_discount
-  # end
-  #
-  # def employee_discount
-  #   @employee_discount
-  # end
+  attr_accessor :discount, :total, :last_transaction
+
 
   def initialize(discount = 0)
     @total = 0
     @discount = discount
+    @all_items = []
   end
 
   def total
@@ -20,8 +16,9 @@ class CashRegister
   end
 
   def add_item(title, price, quantity = 1)
-    @total = @total + (price * quantity)
-    @title = title
+    @total = total + (price * quantity)
+    @all_items.concat([title]*quantity)
+    @last_transaction = price
   end
 
   def apply_discount
@@ -34,8 +31,12 @@ class CashRegister
   end
 
   def items
-    
+    @all_items
   end
 
+  def void_last_transaction
+    @total = @total - @last_transaction
+    # binding.pry
+  end
 
 end
