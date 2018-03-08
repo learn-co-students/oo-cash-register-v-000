@@ -8,17 +8,17 @@ def initialize(discount=0)
  @items = []
 end
 
-
 def add_item(title, price, total=1)
-self.total += price * total
-total.times do 
+  @last_transaction = price * total
+  @total += @last_transaction
+  total.times do 
   items << title
 end
 end
 
 def apply_discount
     if discount != 0
-      self.total = (total * ((100.0 - discount)/100)).to_i
+      @total = (total * ((100.0 - discount)/100)).to_i
       "After the discount, the total comes to $#{self.total}."
     else
       "There is no discount to apply."
@@ -26,7 +26,7 @@ def apply_discount
 end
 
   def void_last_transaction
-    self.total = self.total - self.last_transaction
+   @total = @total - @last_transaction
   end
   
 end
