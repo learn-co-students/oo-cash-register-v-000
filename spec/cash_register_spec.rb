@@ -14,7 +14,7 @@ describe 'CashRegister' do
 
   describe '#total' do
     it 'returns the current total' do
-      cash_register.total = 100
+      cash_register.total = 1001
       expect(cash_register.total).to eq(100)
     end
   end
@@ -41,14 +41,14 @@ describe 'CashRegister' do
   describe '#apply_discount' do
     context 'the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
-        cash_register_with_discount.add_item("macbook air", 1000)
+        cash_register_with_discount.add_item("macbook air", 1001)
         cash_register_with_discount.apply_discount
-        expect(cash_register_with_discount.total).to eq(800)
+        expect(cash_register_with_discount.total).to eq(800.8)
       end
 
       it 'returns success message with updated total' do
-        cash_register_with_discount.add_item("macbook air", 1000)
-        expect(cash_register_with_discount.apply_discount).to eq("After the discount, the total comes to $800.")
+        cash_register_with_discount.add_item("macbook air", 1001)
+        expect(cash_register_with_discount.apply_discount).to eq("After the discount, the total comes to $800.8.")
       end
 
       it 'reduces the total' do
