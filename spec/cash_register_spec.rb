@@ -1,3 +1,5 @@
+require 'pry'
+
 describe 'CashRegister' do
   let(:cash_register) { CashRegister.new }
   let(:cash_register_with_discount) { CashRegister.new(20) }
@@ -42,6 +44,7 @@ describe 'CashRegister' do
     context 'the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
         cash_register_with_discount.add_item("macbook air", 1000)
+        # binding.pry
         cash_register_with_discount.apply_discount
         expect(cash_register_with_discount.total).to eq(800)
       end
