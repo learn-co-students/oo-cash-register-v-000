@@ -20,11 +20,11 @@ class CashRegister
   end
 
   def apply_discount
-    @total = @total - @discount  #float????
-    if @discount = 0 || @discount = nil
-      return "no discount to apply"
+    @total = @total - (@total.to_f * @discount.to_f/100).to_i
+    if @discount != 0
+      "After the discount, the total comes to $#{@total}."
     else
-      return "Success #{@total}"
+       "There is no discount to apply."
     end
   end
 
@@ -33,7 +33,7 @@ class CashRegister
     end
 
     def void_last_transaction
-      @total - @last_transaction
+      @total -= @last_transaction
     end
 
 
