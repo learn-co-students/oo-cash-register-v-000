@@ -2,6 +2,7 @@ class CashRegister
 
   attr_accessor :total, :discount, :price, :title, :previous_total, :items, :transaction
 
+
   def initialize(discount = 0)
     @total = 0
     @discount = discount
@@ -36,12 +37,15 @@ class CashRegister
     end
   end
 
+
   def items
     @items
   end
 
+
   def void_last_transaction
     @total -= @transaction
   end
+
 
 end
