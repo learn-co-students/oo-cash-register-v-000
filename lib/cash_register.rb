@@ -3,11 +3,11 @@
 class CashRegister
   attr_accessor :total, :discount, :title, :price, :quantity
 
-  def initialize(discount = 0)      # optionally takes an employee discount on initialization
-    @total = 0                      #sets an instance variable @total on initialization to zero
+  def initialize(discount = 0)      #employee discount on initialization optional
+    @total = 0
     @discount = discount
-    @items = []                    # stores all title attributes for individual instance of cash_register
-    @transactions = []             # stores all transactions for individual instance of cash_register
+    @items = []                    # stores all titles instance of cash_register
+    @transactions = []             # stores all transactions cash_register
   end
 
   def add_item(title, price, quantity = 0)
@@ -38,8 +38,8 @@ class CashRegister
     end
   end
 
-  def items                       # returns an array containing all items that have been added
-    @items                       # and saved in #add_item method
+  def items
+    @items                      
   end
 
   def void_last_transaction       # subtracts the last transaction from the total
