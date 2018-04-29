@@ -1,11 +1,11 @@
 class CashRegister
 
-attr_accessor :total, :discount, :title, :price, :quantity, :cart
+attr_accessor :total, :discount, :title, :price, :quantity, :last_item
 
 def initialize(discount = 0)
   @discount = discount
   @total = 0
-  @cart = []
+  @item_list = []
 end
 
 def add_item(title, price, quantity = 1)
@@ -13,8 +13,11 @@ def add_item(title, price, quantity = 1)
     item_info[:title] = title
     item_info[:price] = price
     item_info[:quantity] = quantity
-    @cart << item_info
+    quantity.times do
+      @item_list << title
+    end
     @total += price * quantity
+    @last_item = item_info
   end
 
 def apply_discount
@@ -26,17 +29,11 @@ def apply_discount
 end
 
 def items
-  item_names = []
-  @cart.each do | item_info |
-    #for qty in 1..item_info[:quantity]
-        item_names << item_info[:title]
-      #end
-    end
-    item_names
+  @item_list
   end
 
 def void_last_transaction
-  #@total -= @total * @discount / 100
+  @total -= @last_item[:price]
 end
 
 end
