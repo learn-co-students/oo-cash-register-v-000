@@ -2,7 +2,7 @@ class CashRegister
 
   attr_accessor :discount, :item, :last_transaction, :total
 
-  def initialize(employee_discount = nil)
+  def initialize(employee_discount = 0)
     @total = 0
     @discount = employee_discount
     @item = []
@@ -12,20 +12,14 @@ class CashRegister
     @total
   end
 
-  def add_item(title, price, quantity = nil)
-    if quantity != nil
+  def add_item(title, price, quantity = 1)
       self.total = @total + price * quantity
       quantity.to_i.times {@item << title}
       self.last_transaction = price * quantity
-    else
-      self.total = @total + price
-      @item << title
-      self.last_transaction = price
-    end
   end
 
   def apply_discount
-    if @discount != nil
+    if @discount != 0
       @total -= @total * @discount / 100
       return "After the discount, the total comes to $#{@total}."
     else
