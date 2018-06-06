@@ -10,14 +10,12 @@ attr_accessor :total, :discount, :items, :last_transaction
   end
 
   def add_item(title, price, quantity = 1)
-    binding.pry
     quantity.times{@items << title}
     @total += price * quantity
     @last_transaction = {"title" => title, "price" => price, "quantity" => quantity}
   end
 
   def apply_discount
-    binding.pry
     @total = @total - (@total * @discount / 100)
 
     if @total > 0
@@ -28,7 +26,6 @@ attr_accessor :total, :discount, :items, :last_transaction
   end
 
   def void_last_transaction
-    binding.pry
     @total -= @last_transaction["price"] * @last_transaction["quantity"]
     @items.pop(@last_transaction["quantity"])
   end
