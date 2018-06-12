@@ -1,32 +1,34 @@
-require 'pry'
-#ok look, this code works and the solution is pretty good. However the code can be more elegant. for example I never use self here.
 class CashRegister
-  attr_accessor :total, :discount, :items, :order_list
+  attr_accessor :total, :discount, :last_transaction
 
-  def initialize(discount = nil)
+  def initialize(employee_discount = nil)
     @total = 0
-    @discount = discount
     @items = []
-    @order_list = []
+    @discount = employee_discount
   end
 
   def add_item(title, price, quantity = 1)
-    @order_list << { "item_name" => title, "item_price" => price, "quantity_ordered" => quantity }
-    quantity.times { @items << title }
-    self.total += (price * quantity)
+    @total += price * quantity
+    quantity.times {@items << title}
+    self.last_transaction = price * quantity
   end
 
   def apply_discount
-    if @discount == nil
-      "There is no discount to apply."
+    if @discount
+      multiplier = 1 - (@discount.to_f/100)
+      @total *= multiplier
+      @total = @total.to_i
+      "After the discount, the total comes to $#{@total}."
     else
-      self.total = (total * (1 - discount/100.0)).to_i
-      "After the discount, the total comes to $#{self.total}."
+      "There is no discount to apply."
     end
   end
 
-  def void_last_transaction
-    self.total = total - (@order_list.last["item_price"])
+  def items
+    @items
+  end
 
+  def void_last_transaction
+    self.total -= self.last_transaction
   end
 end
