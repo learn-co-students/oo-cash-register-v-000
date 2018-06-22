@@ -1,3 +1,5 @@
+require "pry"
+
 class CashRegister
   
   attr_accessor :discount, :total, :last_transaction, :items
@@ -6,13 +8,13 @@ class CashRegister
     @discount = discount
     @items = []
     @total = 0
-    @transaction_history = 0
   end
   
   def add_item(item, price, quantity = 1)
     self.total += price * quantity
     quantity.times do @items << item
     end
+    @last_transaction = quantity * price
   end
   
   def apply_discount
@@ -27,8 +29,7 @@ class CashRegister
   
   
   def void_last_transaction
-    @items.pop[-1]
-    @total.pop[-1]
+    @total -= @last_transaction
   end
   
 end
