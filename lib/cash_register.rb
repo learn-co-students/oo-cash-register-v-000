@@ -14,10 +14,11 @@ class CashRegister
   end
   
   def apply_discount
-    if @discount = !0
-      @total = (@total * ((100 - @discount.to_f) / 100)).to_f
+    if @discount == !0
+      @total = (@total * ((100 - @discount.to_f) / 100)).to_i
       return "After the discount, the total comes to $#{@total}."
-    else
+    elsif
+      @discount == 0
       return "There is no discount to apply."
     end
   end
@@ -28,9 +29,6 @@ class CashRegister
     @items
   end
   
-  def total
-    @total = @total.to_f * 1+(@discount / 100)
-  end
   
   def void_last_transaction
     # something about = last_transaction[]-1?
