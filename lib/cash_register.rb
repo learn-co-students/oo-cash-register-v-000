@@ -6,6 +6,7 @@ class CashRegister
     @discount = discount
     @items = []
     @total = 0
+    @transaction_history = 0
   end
   
   def add_item(item, price, quantity = 1)
@@ -24,8 +25,10 @@ class CashRegister
     end
   end
   
+  
   def void_last_transaction
-    # something about = last_transaction[]-1?
+    @items.pop[-1]
+    @total.pop[-1]
   end
   
 end
