@@ -19,20 +19,20 @@ def add_item(title, price, quantity = 1)
 end
 
 def apply_discount
-  @total = (@total * 0.8)
+  @total = @total - (@total * @discount / 100)
   if @discount != 0
-    puts "After the discount, the total comes to #{"@total
+    "After the discount, the total comes to $#{@total.to_i}."
   else
-     puts "There is no discount to apply.""
-    
-    
+    "There is no discount to apply."
   end
 end
 
 def items
+  @items
 end
 
-def void_last_tranaction
+def void_last_transaction
+  self.total = self.total - self.previous_item
 end
 
 
