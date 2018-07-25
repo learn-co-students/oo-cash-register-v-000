@@ -14,20 +14,25 @@ class CashRegister
   def total
     @total
   end
+
   def add_item(title,price,quantity = 0)
 
-    i = 0
+
       if quantity > 0
-        while quantity > i
+        while quantity > 0
+
+
           @items << title
 
           @total += price
-          i += 1
+
+          quantity -= 1
         end
-      else
-        @items << title
-        @total += price
-      end
+        else
+          @items << title
+          @total += price
+
+        end
 
   end
 
@@ -41,9 +46,10 @@ class CashRegister
 
   end
 
-  def items
-    @items
+  def self.items
 
+    @items
+    binding.pry
   end
 
   def void_last_transaction
