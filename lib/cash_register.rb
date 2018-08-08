@@ -1,6 +1,6 @@
 #require 'pry'
 class CashRegister
-  attr_accessor :total, :discount, :items
+  attr_accessor :total, :discount, :items, :last_item
 
   def initialize(discount = 0)
     @total = 0
@@ -10,13 +10,11 @@ class CashRegister
 
   def add_item(title, price, quantity = 1)
     self.total += price * quantity
-  #   self.items << title
-  # end
-
-  quantity.times do
-     self.items << title
+    quantity.times do
+      self.items << title
+    end
+    self.last_item = price * quantity
   end
-end 
 
   def apply_discount
     if self.discount == 0
@@ -24,10 +22,14 @@ end
     else
       num = (self.discount.to_f / 100)
       new_num = num * self.total
-      @total = self.total - new_num
+      self.total = self.total - new_num
       return "After the discount, the total comes to $#{@total.to_i}."
     end
     #binding.pry
+  end
+
+  def void_last_transaction
+    self.total = self.total - self.last_item
   end
 
 end
