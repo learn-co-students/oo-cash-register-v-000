@@ -1,7 +1,8 @@
 require 'pry'
 
 class CashRegister
-attr_accessor :total, :items, :title, :price, :last_transaction
+
+attr_accessor :total, :items, :discount, :last_transaction
 
   def initialize(discount = 0) #optionally accepts a discount
     @discount = discount
@@ -9,37 +10,28 @@ attr_accessor :total, :items, :title, :price, :last_transaction
     @items = []
   end
 
-  def discount
-    @discount
-  end
-
   def apply_discount #applies a discount, if given, to the total
     if discount != 0
-      @total = @total - (@total * (@discount.to_f / 100))
-      "After the discount, the total comes to $#{@total.to_i}."
+      self.total = self.total - (self.total * (self.discount.to_f / 100))
+      "After the discount, the total comes to $#{self.total.to_i}."
     else
       "There is no discount to apply."
     end
   end
 
-  def items
-    @items
-  end
-
   def add_item(title, price, quantity = 1)
-    # quantity.times { basket << title}
-    @last_transaction = title, price, quantity #assigns the items being added in to an identifier
+    self.last_transaction = title, price, quantity #assigns the items being added in to an identifier
     quantity.times do
-      @items << title
+      self.items << title
     end
-    @total += quantity * price
+    self.total += quantity * price
   end
 
   def void_last_transaction #uses the last_transaction identifier to void the previous transaction
-    @last_transaction[2].times do
-      @items.delete(@last_transaction[0])
+    # binding.pry
+    self.last_transaction[2].times do
+      self.items.delete(self.last_transaction[0])
     end
-    @total -= @last_transaction[2] * @last_transaction[1]
+    self.total -= self.last_transaction[2] * self.last_transaction[1]
   end
 end
-# binding.pry
