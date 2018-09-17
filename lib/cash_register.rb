@@ -13,10 +13,17 @@ class CashRegister
   end
 
   def apply_discount
-    discount = (100 - @discount).to_f / 100
-    self.total *= discount
-    return "After the discount, the total comes to $#{@total}."
+    if @discount == nil
+      return "There is no discount to apply."
+    else
+      discount = (100 - @discount).to_f / 100
+      self.total *= discount
+      return "After the discount, the total comes to $#{@total.to_int}."
+    end
   end
-
+  
+  def items
+    
+  end
 
 end
