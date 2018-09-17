@@ -5,7 +5,7 @@ class CashRegister
 
   def initialize(discount = nil)
     @total = 0
-    @discount = discount.fdiv(100)
+    @discount = discount/100
   end
 
   def add_item(title, price, quantity=1)
