@@ -7,13 +7,13 @@ class CashRegister
     @items = []
   end 
   
-def add_item (item, price, quantity = 1)
+def add_item(item, price, quantity = 1)
   @price = price
   @total += price * quantity 
   if quantity > 1 
     counter = 0 
     while counter < quantity 
-    @items << items 
+    @items << item
     counter += 1 
   end 
 else 
@@ -32,7 +32,7 @@ def apply_discount
 end
 
 def void_last_transaction
-  @total -= @item 
+  @total -= @price 
 end
 end
 
