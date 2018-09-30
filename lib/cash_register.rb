@@ -23,14 +23,20 @@ class CashRegister
 
 
    def apply_discount 
-    if discount  == 0
-       self.total = (total * ((100.0 - discount.to_f)/100)).to_i
-        binding.pry 
-      puts "After the discount, the total comes to $#{self.total}."
-    else "There is no discount to apply."
-    
-    end 
-  end
+      
+      if discount  == 0
+        
+        "There is no discount to apply."
+      
+      else
+        
+        self.total = (total * ((100.0 - discount.to_f)/100)).to_i
+      
+       "After the discount, the total comes to $#{self.total}."
+     
+        end 
+  
+    end
 
 
   
@@ -38,6 +44,7 @@ class CashRegister
     self.total = self.total - self.last_transaction # reader method 
     
   end
+
 
 end
 
