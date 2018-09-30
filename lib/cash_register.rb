@@ -1,58 +1,43 @@
-require pry 
+class CashRegister
 
-class CashRegiste
+  attr_accessor :items, :discount,  :last_transaction
 
-  attr_accessor :items, total, :discount, :last_transaction
-
-
-array [item, price, quantity]
-  cash_register.instance_variable_get(total)
+  def initialize(discount= 0)# default set so can initialize the cash register
   @items = []
-  @discount discount 
+  @discount = discount 
   @total = 0 
   
-
-
-  # def initialize
-  # @cash_register = cash register
-  # @employee_discount = employee discount
-
-  # end
-
-
-  # def total
-  #   @cash_register = 100.0
+  end
+ 
   
-  # end
   
+  def add_item(title, amount, quantity=1) 
+    self.total += amount * quantity              
+    quantity.times do
+      items << title
+    end
+    self.last_transaction = amount * quantity #writer method 
+  end 
 
 
-  # def add_item(title, price, optional_quantity) 
-  #   @total += cash_register_price.add_item     .collect {|item| item  = (item, total, optional_quantity) = (total * optional_quantity)
+
+  def apply_discount 
+    if discount  = 0 
+      self.total = {total * ((100.0 - discount.to_f)/100)}.to_i
+      "After the discount, the total comes to $#{self.total}."
+    else "There is no discount to apply."
+      
+    end 
+  end
+
+  
+  def void_last_transaction 
+    self.total = self.total - self.last_transaction # reader method 
     
-  # end 
+  end
 
-  # def apply_discount 
-  #   @total 
-  #   @totalprice
-  #   @cash_register_with_discount.add_item = (cash_register_with_discount.total)
-  #   cash_register_with_discount.apply_discount
-  #   puts "After the discount, the total comes to $800."
-  #     if cash_register_with_discount(employee_discount)
-  #       puts "There is no discount to apply."
-  #   total =-
-  # end 
+end
 
-  # def items(array)
-  #   @@items=add.item
   
-  # end
-
-
-  # def void_last_transaction
-  # total -last_transaction
-  # = cash_register.void_last_transaction - cash_register.total
-  # end
-
 
 
