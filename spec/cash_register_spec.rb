@@ -80,4 +80,15 @@ describe 'CashRegister' do
       expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(1.76).to(0.0)
     end
   end
+  
+  describe '#void_last_transaction(s)' do
+    it 'can subtract each transaction from the total, one at a time, starting with the most recent' do
+      cash_register.add_item("tomato", 1.76)
+      cash_register.add_item("eggs", 1.99)
+      cash_register.add_item("Lucky Charms", 4.5)
+      expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(8.25).to(3.75)
+      expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(3.75).to(1.76)
+      expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(1.76).to(0.0)
+    end
+  end
 end
