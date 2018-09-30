@@ -13,46 +13,46 @@ array [item, price, quantity]
   
 
 
-  def initialize
-  @cash_register = cash register
-  @employee_discount = employee discount
+  # def initialize
+  # @cash_register = cash register
+  # @employee_discount = employee discount
 
-  end
+  # end
 
 
-  def total
-    @cash_register = 100.0
+  # def total
+  #   @cash_register = 100.0
   
-  end
+  # end
   
 
 
-  def add_item(title, price, optional_quantity) 
-    @total += cash_register_price.add_item     .collect {|item| item  = (item, total, optional_quantity) = (total * optional_quantity)
+  # def add_item(title, price, optional_quantity) 
+  #   @total += cash_register_price.add_item     .collect {|item| item  = (item, total, optional_quantity) = (total * optional_quantity)
     
-  end 
+  # end 
 
-  def apply_discount 
-    @total 
-    @totalprice
-    @cash_register_with_discount.add_item = (cash_register_with_discount.total)
-    cash_register_with_discount.apply_discount
-    puts "After the discount, the total comes to $800."
-      if cash_register_with_discount(employee_discount)
-        puts "There is no discount to apply."
-    total =-
-  end 
+  # def apply_discount 
+  #   @total 
+  #   @totalprice
+  #   @cash_register_with_discount.add_item = (cash_register_with_discount.total)
+  #   cash_register_with_discount.apply_discount
+  #   puts "After the discount, the total comes to $800."
+  #     if cash_register_with_discount(employee_discount)
+  #       puts "There is no discount to apply."
+  #   total =-
+  # end 
 
-  def items(array)
-    @@items=add.item
+  # def items(array)
+  #   @@items=add.item
   
-  end
+  # end
 
 
-  def void_last_transaction
-   total -last_transaction
-   = cash_register.void_last_transaction - cash_register.total
-  end
+  # def void_last_transaction
+  # total -last_transaction
+  # = cash_register.void_last_transaction - cash_register.total
+  # end
 
 
 
