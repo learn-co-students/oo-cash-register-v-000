@@ -6,16 +6,17 @@ class CashRegister
   def initialize(discount = 0)
     @total = total
     @discount = discount
+    @total = 0
   end
   
   def total
-    @@price.inject(0, :+)
+    #@@price.inject(0, :+)
+    @total
   end 
   
   def add_item(item, price, quantity = 1)
     @@item << item
-    @@price << price*quantity
-    total
+    @total = total + price*quantity
   end
   
   def apply_discount(discount)
