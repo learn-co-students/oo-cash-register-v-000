@@ -34,7 +34,7 @@ class CashRegister
   end
 
   def void_last_transaction
-    @total = @total - (@delete_history[1]*@delete_history[2])
+    @total -= (@delete_history[1]*@delete_history[2])
     @items.delete(@delete_history[0])
   end
 
