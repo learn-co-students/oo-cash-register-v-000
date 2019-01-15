@@ -7,6 +7,7 @@ class CashRegister
   
   def total(employee_discount)
     employee_discount = self.total
+    self.total += 20
   end
 
   # def add_item
