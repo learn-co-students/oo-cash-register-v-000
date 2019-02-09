@@ -1,25 +1,25 @@
-puts describe 'CashRegister' do
+ describe 'CashRegister' do
   let(:cash_register) { CashRegister.new }
   let(:cash_register_with_discount) { CashRegister.new(20) }
 
-  puts describe '::new' do
+   describe '::new' do
     it 'sets an instance variable @total on initialization to zero' do
       expect(cash_register.instance_variable_get(:@total)).to eq(0)
     end
 
-  puts   it 'optionally takes an employee discount on initialization' do
+  it 'optionally takes an employee discount on initialization' do
       expect(cash_register_with_discount.discount).to eq(20)
     end
   end
 
-  puts describe '#total' do
+   describe '#total' do
     it 'returns the current total' do
       cash_register.total = 100
       expect(cash_register.total).to eq(100)
     end
   end
 
-  puts describe '#add_item' do
+ describe '#add_item' do
     it 'accepts a title and a price and increases the total' do
       expect{cash_register.add_item("eggs", 0.98)}.to change{cash_register.total}.by(0.98)
     end
@@ -38,7 +38,7 @@ puts describe 'CashRegister' do
     end
   end
 
-  puts describe '#apply_discount' do
+ describe '#apply_discount' do
     context 'the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
         cash_register_with_discount.add_item("macbook air", 1000)
@@ -65,7 +65,7 @@ puts describe 'CashRegister' do
     end
   end
 
-  puts describe '#items' do
+ describe '#items' do
     it 'returns an array containing all items that have been added' do
       new_register = CashRegister.new
       new_register.add_item("eggs", 1.99)
@@ -74,7 +74,7 @@ puts describe 'CashRegister' do
     end
   end
 
-  puts describe '#void_last_transaction' do
+ describe '#void_last_transaction' do
     it 'subtracts the last transaction from the total' do
       cash_register.add_item("tomato", 1.76)
       expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(1.76).to(0.0)
