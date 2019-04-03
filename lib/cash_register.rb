@@ -2,7 +2,7 @@
 class CashRegister
   attr_accessor :total, :discount
 
-  def initialize(total = 0.0, discount = 20)
+  def initialize(total = 0, discount = 20)
     @total = total
     @discount = discount
 
@@ -21,7 +21,7 @@ class CashRegister
   end
 
   def apply_discount
-    @total = self.total * self.discount 
+    @total = self.total - (self.total * self.discount/100)
 
   end
 #100.class returns Integer while 100.0.class returns Float
