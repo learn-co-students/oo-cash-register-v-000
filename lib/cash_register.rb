@@ -1,23 +1,27 @@
 #require 'pry'
 class CashRegister
-  attr_accessor :total, :disc
+  attr_accessor :total, :discount
 
-  def initialize(total = 0.0)
+  def initialize(total = 0.0, discount = 20)
     @total = total
-    @disc = disc
+    @discount = discount
 
   end
 
-  def discount
-    self.disc = 20
-  end
+  # def total
+  #   @total
+  # end
+
+  # def discount
+  #   self.disc = 20
+  # end
 
   def add_item(title, price, quantity = 1)
     self.total += price * quantity
   end
 
   def apply_discount
-    @total/self.discount = self.total 
+    @total = self.total * self.discount 
 
   end
 #100.class returns Integer while 100.0.class returns Float
