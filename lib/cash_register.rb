@@ -21,4 +21,7 @@ class CashRegister
     end
   end
   #binding.pry
+  def items
+    
+  end
 end
