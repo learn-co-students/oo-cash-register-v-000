@@ -22,13 +22,8 @@ class CashRegister
   end
 
   def items
-    items = []
-    #new_register = CashRegister.new
-    #self.add_item(title, price, quantity)
-
-    items << self.add_item(title, price, quantity)
-    items
-    #array << add_item
+    item = []
+    item << add_item(title, price, quantity).split("")
   end
-  #binding.pry
+#binding.pry
 end
