@@ -36,7 +36,7 @@ class CashRegister
 
     self.add_item(title, price, quantity)
     # self.select {|t| t.self.title}
-    @@all.map{ |t| t.title }
+    @@all.each{ |t| t.title }
     # while @@all.length
     # item << self.title
 
