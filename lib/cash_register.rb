@@ -31,8 +31,9 @@ class CashRegister
   end
 
   def items
-    i = self.add_item(title, price, quantity)
-    i.map { |t| t.title }
+    # i = self.add_item(title, price, quantity)
+    # i.map { |t| t.title }
+    self.select{|i| i.title }
     end
 
 #binding.pry
