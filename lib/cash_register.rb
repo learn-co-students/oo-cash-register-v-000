@@ -2,20 +2,22 @@ require 'pry'
 class CashRegister
   attr_accessor :total, :discount, :title, :price, :quantity
 
-  @@all = []
+  @@item = []
 
   def initialize(discount = 0)
     @total = 0
     @discount = discount
-    @@all << self
+
   end
 
   def add_item(title, price, quantity = 1)
+
     @title = title
     @price = price
     @quantity = quantity
 
     self.total += price * quantity
+    @@item << self
   end
 
   def apply_discount
@@ -29,18 +31,23 @@ class CashRegister
   end
 
   def items
-    # item = []
-    # new_register = CashRegister.new
-    # new_register.add_item(title, price, quantity)
-    # item << new_register
-    # item.map{ |t| t.title }
-
-    # item << self.title
-    # self.add_item(title, price, quantity)
-    @@all.map { |t| t.title }
+    i = self.add_item(title, price, quantity)
+    i.map { |t| t.title }
     end
+
 #binding.pry
 end
+
+# this version only gives me 'tomato':
+# item = []
+# new_register = CashRegister.new
+# new_register.add_item(title, price, quantity)
+# item << new_register
+# item.map{ |t| t.title }
+
+
+# item << self.title
+# self.add_item(title, price, quantity)
 
 #  puts @@all.map{ |dog| dog.name }
 # a = %w{ a b c d e f }
