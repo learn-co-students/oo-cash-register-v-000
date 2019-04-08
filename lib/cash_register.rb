@@ -29,17 +29,15 @@ class CashRegister
   end
 
   def items
-
-    item = []
+    # item = []
     # new_register = CashRegister.new
     # new_register.add_item(title, price, quantity)
+    # item << new_register
+    # item.map{ |t| t.title }
 
-    self.add_item(title, price, quantity)
-    # self.select {|t| t.self.title}
-    @@all.each{ |t| t.title }
-    # while @@all.length
     # item << self.title
-
+    # self.add_item(title, price, quantity)
+    @@all.map { |t| t.title }
     end
 #binding.pry
 end
