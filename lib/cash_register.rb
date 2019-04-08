@@ -35,4 +35,5 @@ attr_accessor :items, :discount, :total, :price
     self.items.pop
     self.total-=price.pop
   end
+  
 end
