@@ -2,7 +2,7 @@ require 'pry'
 class CashRegister
   attr_accessor :total, :discount, :items, :price, :quantity
 
-  # @@item = []
+  # @@item = [] this was wrong
 
   def initialize(discount = 0)
     @items = []
@@ -13,9 +13,9 @@ class CashRegister
 
   def add_item(item, price, quantity = 1)
 
-    # @title = title
-    # @price = price
-    # @quantity = quantity
+    # @title = title - this was not needed
+    # @price = price - this was not needed
+    # @quantity = quantity - this was not needed
 
     self.total += price * quantity
     quantity.times do
@@ -36,36 +36,10 @@ class CashRegister
 
   def items
     @items
-    # self.select
-    # i.map { |t| t.title }
-    # # self.map {|i| i.title }
+
+    # i.map { |t| t.title }  - wrong way to do this
+    # # self.map {|i| i.title } - wrong way to do this
     end
 
 #binding.pry
 end
-
-# this version only gives me 'tomato':
-# item = []
-# new_register = CashRegister.new
-# new_register.add_item(title, price, quantity)
-# item << new_register
-# item.map{ |t| t.title }
-
-
-# item << self.title
-# self.add_item(title, price, quantity)
-
-#  puts @@all.map{ |dog| dog.name }
-# a = %w{ a b c d e f }
-# a.select {|v| v =~ /[aeiou]/}   #=> ["a", "e"]
-
-# name = "paramName"
-# instance_variable_get(("@" + name).intern)
-
-# def foo(x, y)
-#   method(__method__).parameters.map do |_, name|
-#     binding.local_variable_get(name)
-#   end
-# end
-#
-# foo(1, 2)  # => 1, 2
