@@ -1,23 +1,27 @@
 require 'pry'
 class CashRegister
-  attr_accessor :total, :discount, :title, :price, :quantity
+  attr_accessor :total, :discount, :items, :price, :quantity
 
-  @@item = []
+  # @@item = []
 
   def initialize(discount = 0)
+    @items = []
     @total = 0
     @discount = discount
 
   end
 
-  def add_item(title, price, quantity = 1)
+  def add_item(item, price, quantity = 1)
 
-    @title = title
-    @price = price
-    @quantity = quantity
+    # @title = title
+    # @price = price
+    # @quantity = quantity
 
     self.total += price * quantity
-    @@item << self
+    quantity.times do
+      @items << item
+    end
+    # @@item << self
   end
 
   def apply_discount
@@ -31,9 +35,10 @@ class CashRegister
   end
 
   def items
-    i = self.add_item(title, price, quantity)
-    i.map { |t| t.title }
-    
+    @items
+    # self.select
+    # i.map { |t| t.title }
+    # # self.map {|i| i.title }
     end
 
 #binding.pry
