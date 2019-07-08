@@ -1,12 +1,11 @@
 require 'pry'
 
 class CashRegister
-  attr_accessor :total,:discount,:items,:last_transaction
+  attr_reader :total,:discount,:items
   def initialize(discount = 0)
     @total = 0
     @discount = discount
     @items = []
-    @prices = {}
   end
 
   def add_item(item, price, qty = 1)
@@ -18,7 +17,6 @@ class CashRegister
   end
 
   def apply_discount
-    #binding.pry
     if @discount > 0
       deduction = (@discount*@total)/100
       @total = @total - deduction
