@@ -41,7 +41,7 @@ describe 'CashRegister' do
   describe '#apply_discount' do
     context 'the cash register was initialized with an employee discount' do
       it 'applies the discount to the total price' do
-        cash_register_with_discount.add_item("macbook air", 1000)
+        cash_register_with_discount.add_item("macbook air", 1000.0)
         cash_register_with_discount.apply_discount
         expect(cash_register_with_discount.total).to eq(800)
       end
@@ -85,6 +85,12 @@ describe 'CashRegister' do
     it 'returns the total to 0.0 if all items have been removed' do
       cash_register.add_item("tomato", 1.76, 2)
       expect{cash_register.void_last_transaction}.to change{cash_register.total}.from(3.52).to(0.0)
+    end
+
+    it 'maintains a proper items list' do
+      cash_register.add_item("tomato", 1.76)
+      cash_register.add_item("orange", 1.99, 3)
+      expect{cash_register.void_last_transaction}.to change{cash_register.items}.from(%w{tomato orange orange orange}).to(%w{tomato})
     end
   end
 end
