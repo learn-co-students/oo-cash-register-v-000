@@ -4,7 +4,7 @@ class CashRegister
   attr_reader :discount
 
   def initialize(discount = nil)
-    @total = 0.0
+    @total = 0
     @discount = discount
     @items = []
   end
@@ -31,5 +31,5 @@ class CashRegister
   def void_last_transaction
     self.total -= self.last_transaction
   end
-  
+
 end
