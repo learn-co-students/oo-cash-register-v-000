@@ -48,7 +48,7 @@ describe 'CashRegister' do
 
       it 'returns success message with updated total' do
         cash_register_with_discount.add_item("macbook air", 1000)
-        expect(cash_register_with_discount.apply_discount).to eq("After the discount, the total comes to $800.")
+        expect(cash_register_with_discount.apply_discount).to eq("After the discount, the total comes to $800.0.")
       end
 
       it 'reduces the total' do
