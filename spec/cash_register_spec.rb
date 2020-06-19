@@ -8,6 +8,9 @@ describe 'CashRegister' do
     end
 
     it 'optionally takes an employee discount on initialization' do
+      cash_register_with_discount = CashRegister.new(20)
+      cash_register_with_discount.discount #=> 20
+
       expect(cash_register_with_discount.discount).to eq(20)
     end
   end
